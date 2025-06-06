@@ -83,54 +83,104 @@
 </div>
 
 <style>
+    body {
+        background-color: #fefaf3;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 40px auto;
+    }
+    
     .card {
         border-radius: 15px;
         border: none;
+        box-shadow: 0 4px 20px rgba(180, 138, 90, 0.07);
+        background: #fffaf0;
+        overflow: hidden;
     }
     
     .card-header {
-        border-bottom: 1px solid #eee;
-        border-top-left-radius: 15px !important;
-        border-top-right-radius: 15px !important;
+        background-color: #fdf6ee;
+        border-bottom: 1px solid #e2d9c5;
+        padding: 18px 24px;
+    }
+    
+    .btn-outline-secondary {
+        color: #8b6f4e;
+        border: 1.5px solid #d8cbb3;
+        background-color: transparent;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+    
+    .btn-outline-secondary:hover {
+        background-color: #f8f3ea;
+        color: #b48a5a;
+        border-color: #c8b48d;
+    }
+    
+    .fw-bold {
+        color: #b48a5a;
+    }
+    
+    .card-body {
+        padding: 2rem;
     }
     
     .form-control, .form-select {
-        padding: 10px 15px;
+        background: #f8f3ea;
+        border: 1.5px solid #f1e3d3;
+        color: #8b6f4e;
+        font-weight: 500;
         border-radius: 8px;
-        border: 1px solid #ddd;
+        padding: 0.7rem 1rem;
         transition: all 0.3s;
     }
     
     .form-control:focus, .form-select:focus {
-        border-color: #4f46e5;
-        box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
+        border-color: #c8b48d;
+        box-shadow: 0 0 0 0.2rem rgba(200, 180, 141, 0.2);
+        background-color: #fffefb;
+    }
+    
+    .text-secondary {
+        color: #a39b91 !important;
+    }
+    
+    .text-muted {
+        color: #a39b91 !important;
+        font-size: 0.85rem;
     }
     
     .btn-primary {
-        background-color: #4f46e5;
-        border-color: #4f46e5;
-        border-radius: 8px;
+        background-color: #c7a86d;
+        border: none;
         font-weight: 500;
+        padding: 0.7rem 1.5rem;
+        border-radius: 8px;
+        transition: background-color 0.2s;
     }
     
     .btn-primary:hover {
-        background-color: #4338ca;
-        border-color: #4338ca;
+        background-color: #b48a5a;
     }
     
-    .btn-outline-secondary {
-        border-radius: 8px;
+    .invalid-feedback {
+        color: #d9534f;
+        font-size: 0.85rem;
     }
     
-    .avatar-placeholder {
-        width: 100px;
-        height: 100px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background-color: #f3f4f6;
+    .form-group {
+        margin-bottom: 1.8rem;
+    }
+    
+    label.fw-bold {
+        font-weight: 600 !important;
+        color: #8b6f4e;
+        margin-bottom: 0.5rem;
     }
 </style>
 @endsection

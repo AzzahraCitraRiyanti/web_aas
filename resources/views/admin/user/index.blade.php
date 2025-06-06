@@ -64,13 +64,13 @@
                                 <td>
                                     <div class="action-buttons">
                                         <a href="{{ route('admin.user.edit', $user) }}" class="btn-action edit">
-                                            <i class="fas fa-edit"></i>
+                                            <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <form action="{{ route('admin.user.destroy', $user) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn-action delete">
-                                                <i class="fas fa-trash"></i>
+                                                <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
                                     </div>
@@ -194,33 +194,35 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
         border-radius: 6px;
-        border: 1px solid;
+        border: none;
         transition: all 0.2s;
         background: transparent;
         cursor: pointer;
     }
 
     .btn-action.edit {
-        color: #4f46e5;
-        border-color: #4f46e5;
+        color: #fff;
+        background-color: #4f46e5;
     }
 
     .btn-action.edit:hover {
-        background-color: #4f46e5;
-        color: white;
+        background-color: #4338ca;
     }
 
     .btn-action.delete {
-        color: #ef4444;
-        border-color: #ef4444;
+        color: #fff;
+        background-color: #ef4444;
     }
 
     .btn-action.delete:hover {
-        background-color: #ef4444;
-        color: white;
+        background-color: #dc2626;
+    }
+
+    .btn-action i {
+        font-size: 14px;
     }
 
     /* Pagination styling */

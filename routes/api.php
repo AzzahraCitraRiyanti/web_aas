@@ -4,7 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BarangApiController;
 use App\Http\Controllers\Api\PeminjamanApiController;
 use App\Http\Controllers\Api\PengembalianApiController;
-use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\ProfilleApiController;
 
 // Auth
 Route::post('/register', [AuthController::class, 'register']);
@@ -15,10 +15,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     // Profile
-    // Route::get('/profile', [ProfileController::class, 'show']);
-    // Route::post('/profile', [ProfileController::class, 'update']);
-    // Route::post('/profile/photo', [ProfileController::class, 'uploadPhoto']);
-    // Route::post('/profile/password', [ProfileController::class, 'updatePassword']);
+    Route::get('/profile', [ProfilleApiController::class, 'show']);
+    Route::post('/profile', [ProfilleApiController::class, 'update']);
+    Route::post('/profile/photo', [ProfilleApiController::class, 'uploadPhoto']);
+    Route::post('/profile/password', [ProfilleApiController::class, 'updatePassword']);
 });
 
 // Pengembalian (butuh login)
@@ -28,7 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 // Peminjaman (butuh login)
     Route::post('/peminjaman', [PeminjamanApiController::class, 'store']);
-    Route::get('/peminjaman/user/{userId}/aktif', [PeminjamanApiController::class, 'index']);
+    Route::get('/peminjaman', [PeminjamanApiController::class, 'index']);
 
 // Pengembalian (public view)
 Route::get('/pengembalian', [PengembalianApiController::class, 'index']);

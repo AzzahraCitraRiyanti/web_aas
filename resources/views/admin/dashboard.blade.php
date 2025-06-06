@@ -106,6 +106,19 @@
         font-weight: 600;
         margin-bottom: 1rem;
         color: #555;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+    
+    .stats-section h3:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: #ab9b81;
+        border-radius: 3px;
     }
     
     .stats-container {
@@ -113,6 +126,71 @@
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         padding: 1.5rem;
+    }
+    
+    .activity-empty {
+        padding: 2rem;
+        text-align: center;
+        color: #888;
+        font-style: italic;
+        background: #f9f9f9;
+        border-radius: 8px;
+        border: 1px dashed #ddd;
+    }
+    
+    /* Styling untuk footer */
+    .dashboard-footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 1.5rem 0;
+        color: #888;
+        font-size: 0.9rem;
+        border-top: 1px solid #eee;
+    }
+    
+    .dashboard-footer span {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: #f8f5f0;
+        border-radius: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Tambahan styling baru */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .dashboard-summary {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .dashboard-summary p {
+        color: #666;
+        line-height: 1.6;
+    }
+    
+    .dashboard-cards .dashboard-card .badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 0.25rem 0.5rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background: #f8f9fa;
+        color: #6c757d;
+    }
+    
+    @media (max-width: 768px) {
+        .dashboard-cards {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 @endsection
@@ -128,10 +206,15 @@
             </div>
         @endif
         
+        <div class="dashboard-summary">
+            <p>Selamat datang di Dashboard Admin. Berikut adalah ringkasan data sistem Anda.</p>
+        </div>
+        
         <div class="dashboard-cards">
             <!-- Data Barang -->
             <a href="{{ route('barang.index') }}" class="dashboard-card barang">
                 <span class="icon-bg"><i class="bi bi-box"></i></span>
+                <span class="badge">Data</span>
                 <h3>Data Barang</h3>
                 <span class="count">{{ $databarang }}</span>
             </a>
@@ -139,6 +222,7 @@
             <!-- Kategori Barang -->
             <a href="{{ route('kategori.index') }}" class="dashboard-card kategori">
                 <span class="icon-bg"><i class="bi bi-tags"></i></span>
+                <span class="badge">Kategori</span>
                 <h3>Kategori Barang</h3>
                 <span class="count">{{ $datakategori }}</span>
             </a>
@@ -146,23 +230,24 @@
             <!-- Users -->
             <a href="{{ route('admin.user.index') }}" class="dashboard-card users">
                 <span class="icon-bg"><i class="bi bi-people"></i></span>
+                <span class="badge">Pengguna</span>
                 <h3>Users</h3>
-                <span class="count">0</span>
+                <span class="count">{{ $datausers ?? 0 }}</span>
             </a>
             
             <!-- Ruangan -->
             <div class="dashboard-card ruangan">
                 <span class="icon-bg"><i class="bi bi-building"></i></span>
+                <span class="badge">Fasilitas</span>
                 <h3>Ruangan</h3>
-                <span class="count">50</span>
+                <span class="count">{{ $dataruangan ?? 50 }}</span>
             </div>
         </div>
         
-        <div class="stats-section">
-            <h3>Aktivitas Terbaru</h3>
-            <div class="stats-container">
-                <p class="text-muted">Belum ada aktivitas terbaru.</p>
-            </div>
+       
+        <!-- Footer -->
+        <div class="dashboard-footer">
+            <span>&copy; 2025 Sistem Administrasi Sarana Prasarana</span>
         </div>
     </div>
 @endsection

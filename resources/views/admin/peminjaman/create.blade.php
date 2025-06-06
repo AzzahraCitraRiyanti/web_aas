@@ -2,7 +2,7 @@
 @section('title', 'Tambah Peminjaman')
 @section('content')
 <h2 class="mb-3">Tambah Peminjaman</h2>
-<form action="{{ route('peminjamans.store') }}" method="POST">
+<form action="{{ route('admin.peminjaman.store') }}" method="POST">
     @csrf
     <div class="mb-3">
         <label for="barang_id" class="form-label">Pilih Barang</label>

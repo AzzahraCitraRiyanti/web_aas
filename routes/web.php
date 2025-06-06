@@ -62,12 +62,16 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
 
     // Peminjaman
-    Route::get('/', [PeminjamanController::class, 'index'])->name('index');
-    Route::get('/create', [PeminjamanController::class, 'create'])->name('create');
-    Route::post('/', [PeminjamanController::class, 'store'])->name('store');
-    Route::post('/{peminjaman}/approve', [PeminjamanController::class, 'approve'])->name('approve');
-    Route::post('/{peminjaman}/reject', [PeminjamanController::class, 'reject'])->name('reject');
-    Route::post('/{peminjaman}/kembali', [PeminjamanController::class, 'kembali'])->name('kembali');
+    Route::get('/admin/peminjaman', [PeminjamanController::class, 'index'])->name('admin.peminjaman.index');
+    Route::get('/admin/peminjaman/create', [PeminjamanController::class, 'create'])->name('admin.peminjaman.create');
+    Route::post('/admin/peminjaman', [PeminjamanController::class, 'store'])->name('admin.peminjaman.store');
+    Route::get('/admin/peminjaman/{peminjaman}/edit', [PeminjamanController::class, 'edit'])->name('admin.peminjaman.edit');
+    Route::put('/admin/peminjaman/{peminjaman}', [PeminjamanController::class, 'update'])->name('admin.peminjaman.update');
+    Route::delete('/admin/peminjaman/{peminjaman}', [PeminjamanController::class, 'destroy'])->name('admin.peminjaman.destroy');
+    Route::post('/admin/peminjaman/{peminjaman}/approve', [PeminjamanController::class, 'approve'])->name('admin.peminjaman.approve');
+    Route::post('/admin/peminjaman/{peminjaman}/reject', [PeminjamanController::class, 'reject'])->name('admin.peminjaman.reject');
+    Route::post('/admin/peminjaman/{peminjaman}/kembali', [PeminjamanController::class, 'kembali'])->name('admin.peminjaman.kembali');
+    Route::get('/admin/peminjaman/{peminjaman}', [PeminjamanController::class, 'show'])->name('admin.peminjaman.show');
 
     // Pengembalian
     Route::get('/pengembalian', [PengembalianController::class, 'index'])->name('pengembalian.index');
@@ -107,6 +111,7 @@ Route::prefix('stock')->name('stock.')->group(function () {
 Route::get('/user', function () {
     return ('user');
 })->middleware('auth', 'role:user');
+
 
 
 

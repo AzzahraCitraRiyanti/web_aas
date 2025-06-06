@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\Kategori;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -20,6 +21,23 @@ class DashboardController extends Controller
     {
         $databarang = Barang::count();
         $datakategori = Kategori::count();
-        return view('admin.dashboard', compact(['databarang','datakategori'] )); // Ganti dengan view yang sesuai
+        $datausers = User::count();
+        $dataruangan = 0; // Ganti dengan model Ruangan jika ada
+        $datapeminjaman = 0; // Ganti dengan model Peminjaman jika ada
+        $datapengembalian = 0; // Ganti dengan model Pengembalian jika ada
+        
+        // Jika ada model Activity, tambahkan:
+        // $activities = Activity::latest()->take(5)->get();
+        
+        return view('admin.dashboard', compact(
+            'databarang',
+            'datakategori',
+            'datausers',
+            'dataruangan',
+            'datapeminjaman',
+            'datapengembalian'
+            // 'activities'
+        ));
     }
 }
+

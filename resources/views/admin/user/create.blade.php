@@ -98,19 +98,24 @@
 </div>
 
 <style>
+    body {
+        background-color: #fefaf3;
+    }
+    
     .container {
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: 800px;
+        margin: 40px auto;
     }
     
     .btn-back {
         display: inline-flex;
         align-items: center;
-        color: #4b5563;
+        color: #8b6f4e;
         text-decoration: none;
         font-weight: 500;
         transition: color 0.2s;
         padding: 8px 0;
+        margin-bottom: 20px;
     }
     
     .btn-back i {
@@ -118,68 +123,89 @@
     }
     
     .btn-back:hover {
-        color: #1f2937;
+        color: #b48a5a;
     }
     
     .card {
-        border-radius: 10px;
+        border-radius: 14px;
         border: none;
+        box-shadow: 0 4px 20px rgba(180, 138, 90, 0.07);
+        background: #fffaf0;
         overflow: hidden;
     }
     
     .card-header {
-        background-color: #f9fafb;
-        border-bottom: 1px solid #e5e7eb;
-        padding: 15px 20px;
+        background-color: #fdf6ee;
+        border-bottom: 1px solid #e2d9c5;
+        padding: 18px 24px;
     }
     
     .card-header h4 {
-        color: #111827;
-        font-weight: 600;
-        font-size: 18px;
+        color: #b48a5a;
+        font-weight: 700;
+        font-size: 1.4rem;
+        margin: 0;
+    }
+    
+    .card-body {
+        padding: 2rem 2.2rem 1.5rem 2.2rem;
     }
     
     .form-label {
-        color: #4b5563;
-        font-weight: 500;
-        margin-bottom: 8px;
+        font-weight: 600;
+        color: #8b6f4e;
+        margin-bottom: 0.5rem;
     }
     
     .input-group-text {
-        background-color: #f9fafb;
-        border-color: #d1d5db;
-        color: #6b7280;
+        background-color: #f8f3ea;
+        border: 1.5px solid #f1e3d3;
+        color: #8b6f4e;
     }
     
     .form-control, .form-select {
-        border-color: #d1d5db;
-        padding: 10px 15px;
+        background: #f8f3ea;
+        border: 1.5px solid #f1e3d3;
+        color: #8b6f4e;
+        font-weight: 500;
+        border-radius: 8px;
+        padding: 0.6rem 1rem;
     }
     
     .form-control:focus, .form-select:focus {
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+        border-color: #c8b48d;
+        box-shadow: 0 0 0 0.2rem rgba(200, 180, 141, 0.2);
+        background-color: #fffefb;
     }
     
     .btn-primary {
-        background-color: #3b82f6;
-        border-color: #3b82f6;
+        background-color: #c7a86d;
+        border: none;
+        font-weight: 500;
+        padding: 0.6rem 1.4rem;
+        border-radius: 8px;
     }
     
     .btn-primary:hover {
-        background-color: #2563eb;
-        border-color: #2563eb;
+        background-color: #b48a5a;
     }
     
     .btn-outline-secondary {
-        color: #4b5563;
-        border-color: #d1d5db;
+        color: #8b6f4e;
+        border: 1.5px solid #d8cbb3;
+        background-color: transparent;
+        border-radius: 8px;
+        padding: 0.6rem 1.4rem;
     }
     
     .btn-outline-secondary:hover {
-        background-color: #f3f4f6;
-        color: #1f2937;
-        border-color: #d1d5db;
+        background-color: #f8f3ea;
+        color: #b48a5a;
+        border-color: #c8b48d;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
     }
 </style>
 @endsection
