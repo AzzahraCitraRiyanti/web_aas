@@ -116,6 +116,7 @@ class PengembalianController extends Controller
         $pengembalian = Pengembalian::with(['peminjaman.user', 'peminjaman.barang'])->findOrFail($id);
         return view('admin.pengembalian.show', compact('pengembalian'));
     }
+    
 
     public function approve($id)
     {
@@ -183,4 +184,21 @@ class PengembalianController extends Controller
         return redirect()->route('pengembalian.index')
             ->with('success', 'Pengembalian ditolak.');
     }
+
+    public function updateDenda(Request $request, $id)
+    {
+        $request->validate([
+            'biaya_denda' => 'required|numeric|min:0',
+        ]);
+
+        $pengembalian = Pengembalian::findOrFail($id);
+
+        // Update biaya denda
+        $pengembalian->biaya_denda = $request->biaya_denda;
+        $pengembalian->save();
+
+        return redirect()->back()->with('success', 'Biaya denda berhasil diperbarui menjadi Rp ' . number_format($request->biaya_denda, 0, ',', '.'));
+    }
 }
+
+

@@ -96,17 +96,22 @@
         </div>
     </div>
 </div>
-
 <style>
     body {
         background-color: #fefaf3;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
     }
-    
+
     .container {
-        max-width: 800px;
-        margin: 40px auto;
+        max-width: 600px;
+        margin-left: 40px; /* ke kiri */
+        margin-top: 20px;  /* lebih ke atas */
+        margin-right: auto;
+        padding: 0 16px;
     }
-    
+
     .btn-back {
         display: inline-flex;
         align-items: center;
@@ -114,98 +119,113 @@
         text-decoration: none;
         font-weight: 500;
         transition: color 0.2s;
-        padding: 8px 0;
-        margin-bottom: 20px;
+        padding: 10px 0;
+        margin-bottom: 24px;
+        font-size: 1rem;
     }
-    
+
     .btn-back i {
-        margin-right: 8px;
+        margin-right: 10px;
     }
-    
+
     .btn-back:hover {
         color: #b48a5a;
     }
-    
+
     .card {
         border-radius: 14px;
         border: none;
-        box-shadow: 0 4px 20px rgba(180, 138, 90, 0.07);
+        box-shadow: 0 4px 16px rgba(180, 138, 90, 0.08);
         background: #fffaf0;
         overflow: hidden;
     }
-    
+
     .card-header {
         background-color: #fdf6ee;
         border-bottom: 1px solid #e2d9c5;
-        padding: 18px 24px;
+        padding: 20px 24px;
     }
-    
+
     .card-header h4 {
         color: #b48a5a;
         font-weight: 700;
         font-size: 1.4rem;
         margin: 0;
     }
-    
+
     .card-body {
-        padding: 2rem 2.2rem 1.5rem 2.2rem;
+        padding: 2rem 2rem 1.8rem 2rem;
     }
-    
+
     .form-label {
         font-weight: 600;
         color: #8b6f4e;
         margin-bottom: 0.5rem;
+        display: block;
+        font-size: 0.95rem;
     }
-    
+
+    .input-group {
+        margin-bottom: 1.6rem;
+    }
+
     .input-group-text {
         background-color: #f8f3ea;
         border: 1.5px solid #f1e3d3;
         color: #8b6f4e;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
     }
-    
-    .form-control, .form-select {
+
+    .form-control,
+    .form-select {
         background: #f8f3ea;
         border: 1.5px solid #f1e3d3;
         color: #8b6f4e;
         font-weight: 500;
         border-radius: 8px;
         padding: 0.6rem 1rem;
+        font-size: 0.95rem;
     }
-    
-    .form-control:focus, .form-select:focus {
+
+    .form-control:focus,
+    .form-select:focus {
         border-color: #c8b48d;
         box-shadow: 0 0 0 0.2rem rgba(200, 180, 141, 0.2);
         background-color: #fffefb;
     }
-    
+
     .btn-primary {
         background-color: #c7a86d;
         border: none;
         font-weight: 500;
-        padding: 0.6rem 1.4rem;
+        padding: 0.65rem 1.4rem;
         border-radius: 8px;
+        font-size: 0.95rem;
     }
-    
+
     .btn-primary:hover {
         background-color: #b48a5a;
     }
-    
+
     .btn-outline-secondary {
         color: #8b6f4e;
         border: 1.5px solid #d8cbb3;
         background-color: transparent;
         border-radius: 8px;
-        padding: 0.6rem 1.4rem;
+        padding: 0.65rem 1.4rem;
+        font-size: 0.95rem;
     }
-    
+
     .btn-outline-secondary:hover {
         background-color: #f8f3ea;
         color: #b48a5a;
         border-color: #c8b48d;
     }
-    
+
     .form-group {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.6rem;
     }
 </style>
+
 @endsection

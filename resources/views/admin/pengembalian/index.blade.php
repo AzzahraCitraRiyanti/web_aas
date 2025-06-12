@@ -230,6 +230,7 @@
                     <th>Barang</th>
                     <th>Tanggal Kembali</th>
                     <th>Jumlah</th>
+                    <th>Denda</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </tr>
@@ -242,6 +243,11 @@
                         <td>{{ $pengembalian->peminjaman->barang->nama_barang }}</td>
                         <td>{{ \Carbon\Carbon::parse($pengembalian->tanggal_pengembalian)->format('d M Y') }}</td>
                         <td>{{ $pengembalian->jumlah_kembali }}</td>
+                        <td>
+                            <span style="color: #dc3545; font-weight: 600;">
+                                Rp {{ number_format($pengembalian->biaya_denda, 0, ',', '.') }}
+                            </span>
+                        </td>
                         <td>
                             <span class="badge badge-{{ $pengembalian->status }}">
                                 {{ ucfirst($pengembalian->status) }}
@@ -271,7 +277,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center py-4">
+                        <td colspan="8" class="text-center py-4">
                             <div class="empty-state">
                                 <i class="bi bi-inbox"></i>
                                 <h5>Tidak ada data pengembalian</h5>

@@ -78,8 +78,17 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/pengembalian/create', [PengembalianController::class, 'create'])->name('pengembalian.create');
     Route::post('/pengembalian', [PengembalianController::class, 'store'])->name('pengembalian.store');
     Route::get('/pengembalian/{id}', [PengembalianController::class, 'show'])->name('pengembalian.show');
+    Route::post('/pengembalian/{id}/set-denda', [PengembalianController::class, 'setDenda'])->name('pengembalian.setDenda');
+
     Route::post('/pengembalian/{id}/approve', [PengembalianController::class, 'approve'])->name('pengembalian.approve');
     Route::post('/pengembalian/{id}/reject', [PengembalianController::class, 'reject'])->name('pengembalian.reject');
+
+    // Route untuk admin pengembalian
+    Route::prefix('admin/pengembalian')->name('admin.pengembalian.')->group(function () {
+        Route::get('/', [PengembalianController::class, 'index'])->name('index');
+        Route::get('/{id}', [PengembalianController::class, 'show'])->name('show');
+        Route::put('/{id}/update-denda', [PengembalianController::class, 'updateDenda'])->name('update-denda');
+    });
 
     Route::prefix('peminjaman')->name('admin.peminjaman.')->group(function () {
         Route::get('/', [PeminjamanController::class, 'index'])->name('index');
