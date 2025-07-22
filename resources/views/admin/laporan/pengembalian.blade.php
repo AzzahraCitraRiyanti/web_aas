@@ -321,7 +321,7 @@
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $pengembalian->peminjaman->user->name ?? 'User tidak ditemukan' }}</td>
-                    <td>{{ $pengembalian->peminjaman->barang->nama_barang ?? 'Barang tidak ditemukan' }}</td>
+                    <td>{{ $pengembalian->peminjaman->barang->nama ?? 'Barang tidak ditemukan' }}</td>
                     <td>{{ $pengembalian->jumlah_kembali }}</td>
                     <td>{{ $pengembalian->peminjaman->tanggal_pinjam ? \Carbon\Carbon::parse($pengembalian->peminjaman->tanggal_pinjam)->format('d M Y') : '-' }}</td>
                     <td>{{ \Carbon\Carbon::parse($pengembalian->tanggal_pengembalian)->format('d M Y') }}</td>

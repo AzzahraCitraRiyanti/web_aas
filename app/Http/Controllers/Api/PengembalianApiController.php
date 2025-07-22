@@ -12,9 +12,18 @@ use App\Models\User;
 
 class PengembalianApiController extends Controller
 {
+    public function index()
+    {
+        $pengembalians = Pengembalian::with(['peminjaman.barang', 'peminjaman.user'])->latest()->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $pengembalians
+        ]);
+    }
+
     public function store(Request $request)
     {
-        // Validasi input
         $validated = $request->validate([
             'peminjaman_id'        => 'required|exists:peminjamans,id',
             'tanggal_pengembalian' => 'required|date',
@@ -25,7 +34,6 @@ class PengembalianApiController extends Controller
             'biaya_denda'          => 'nullable|numeric|min:0',
         ]);
 
-        // Cek apakah sudah ada pengembalian (selain ditolak)
         $existing = Pengembalian::where('peminjaman_id', $validated['peminjaman_id'])->first();
 
         if ($existing && $existing->status !== 'ditolak') {
@@ -39,7 +47,6 @@ class PengembalianApiController extends Controller
             $existing->delete();
         }
 
-        // Ambil data peminjaman
         $peminjaman = Peminjaman::with('barang')->find($validated['peminjaman_id']);
 
         if (!$peminjaman) {
@@ -63,10 +70,8 @@ class PengembalianApiController extends Controller
             ], 400);
         }
 
-        // Hitung denda
         $denda = $validated['biaya_denda'] ?? 0;
 
-        // Denda keterlambatan
         $tgl_kembali_seharusnya = Carbon::parse($peminjaman->tanggal_kembali);
         $tgl_pengembalian = Carbon::parse($validated['tanggal_pengembalian']);
 
@@ -75,7 +80,6 @@ class PengembalianApiController extends Controller
             $denda += $hari_telat * 10000 * $validated['jumlah_kembali'];
         }
 
-        // Denda kondisi barang
         $harga_barang = $peminjaman->barang->harga ?? 0;
         if ($validated['kondisi_barang'] === 'rusak') {
             $denda += 0.5 * $harga_barang * $validated['jumlah_kembali'];
@@ -83,7 +87,6 @@ class PengembalianApiController extends Controller
             $denda += 1.0 * $harga_barang * $validated['jumlah_kembali'];
         }
 
-        // Simpan pengembalian
         $pengembalian = Pengembalian::create([
             'peminjaman_id'        => $validated['peminjaman_id'],
             'tanggal_pengembalian' => $validated['tanggal_pengembalian'],
@@ -103,7 +106,6 @@ class PengembalianApiController extends Controller
 
     public function riwayat($userId)
     {
-        // Validasi user ID
         $user = User::find($userId);
         if (!$user) {
             return response()->json([
@@ -112,8 +114,6 @@ class PengembalianApiController extends Controller
             ], 404);
         }
 
-        // Ambil data pengembalian berdasarkan user ID
-        // Menggunakan relasi dari pengembalian -> peminjaman -> user
         $pengembalians = Pengembalian::with(['peminjaman.barang'])
             ->whereHas('peminjaman', function($query) use ($userId) {
                 $query->where('user_id', $userId);
